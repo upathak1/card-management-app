@@ -20,4 +20,4 @@
 
   
 
-  *Systemic Verification Rule:* Any transaction or manual threshold input string that attempts to allocate a limit variable higher than $75,000 must be intercepted at the UI boundary layer, rejected, and throw a clear validation flag alert onto the user console interface.
+  *Systemic Verification Rule:* Any transaction or manual threshold input string that attempts to allocate a limit variable higher than $80,000 must be intercepted at the UI boundary layer, rejected, and throw a clear validation flag alert onto the user console interface.
