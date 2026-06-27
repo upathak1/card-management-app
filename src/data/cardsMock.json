@@ -1,0 +1,6 @@
+{
+  "cards": [
+    {"id": "1", "holder": "Alex PM", "type": "Visa Gold", "last4": "4321", "status": "active", "limit": 5000, "balance": 1250},
+    {"id": "2", "holder": "Alex PM", "type": "Mastercard Black", "last4": "8899", "status": "blocked", "limit": 15000, "balance": 0}
+  ]
+}

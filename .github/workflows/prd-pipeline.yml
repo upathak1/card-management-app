@@ -1,0 +1,44 @@
+name: PRD-Driven Autonomous Development Lifecycle
+
+on:
+  push:
+    paths:
+      - 'docs/PRD.md' # Evaluates and executes ONLY when changes hit the PRD document file
+
+jobs:
+  regenerate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Agentic Builder Script
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: |
+          pip install requests
+          python scripts/auto_builder.py
+
+      - name: Set Up Node.js & Install Dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Vitest Suite Validation
+        run: |
+          npm install
+          npx vitest run # Executes the generated tests against the generated code
+
+      - name: Deploy to Production Vercel Host
+        if: success() # Runs ONLY if tests pass perfectly without errors
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
