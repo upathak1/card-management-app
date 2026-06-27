@@ -16,7 +16,7 @@
 
 ## 3. Data Constraints
 
-* **REGULATORY RISK CONSTRAINT UPDATE:** Card spending limits cannot exceed an absolute maximum ceiling of **$75,000**. 
+* **REGULATORY RISK CONSTRAINT UPDATE:** Card spending limits cannot exceed an absolute maximum ceiling of **$80,000**. 
 
   
 
